@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Лабораторная №3</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link rel="icon" href="images/favicon.ico"/>
+    <script type="text/javascript" src="script.js"/>
+</h:head>
+
+<h:body class = "alive" link="yellow">
+    <f:view>
+        <h:form>
+            <canvas width='830' height="630" id='example' onclick="drawDot(event)" class="rightpic"/>
+            <table class = "form">
+                <tr>
+                    <td>X[-2;2]</td>
+                    <td><h:selectOneRadio id="field_x" value="#{controllerBean.x}">
+                        <f:selectItem itemValue = "-2" itemLabel = "-2" />
+                        <f:selectItem itemValue = "-1.5" itemLabel = "-1.5" />
+                        <f:selectItem itemValue = "-1" itemLabel = "-1" />
+                        <f:selectItem itemValue = "-0.5" itemLabel = "-0.5" />
+                        <f:selectItem itemValue = "0" itemLabel = "0" />
+                        <f:selectItem itemValue = "0.5" itemLabel = "0.5" />
+                        <f:selectItem itemValue = "1" itemLabel = "1" />
+                        <f:selectItem itemValue = "1.5" itemLabel = "1.5" />
+                        <f:selectItem itemValue = "2" itemLabel = "2" />
+                    </h:selectOneRadio></td>
+                </tr>
+                <tr>
+                    <td><label for="field_y">Y[-3;5]</label></td>
+                    <td><h:inputText value="#{controllerBean.y}" required="true"  placeholder="fill" onkeypress="return entered('field_y');" id="field_y"/>
+                        <h:inputText style="visibility: hidden;" value="#{controllerBean.x}"  placeholder="fill" id="field_X"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="field_r">R[1;4]</label></td>
+                    <td><h:inputText value="#{controllerBean.r}" required="true" onblur="draw()"  placeholder="fill" onkeypress="return entered('field_r');" id="field_r"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h:commandButton class="form" style="color: yellow" onmousedown="return proverka()" action="#{controllerBean.submit()}" value="Принять"/>
+                        <h:commandButton class="form" style="color: yellow" action="#{controllerBean.clear()}" value="Удалить все элементы"/>
+                        <h:commandLink class="form" style="color: yellow" action="index">На стартовую страницу </h:commandLink>
+                    </td>
+                </tr>
+            </table>
+        <div>
+            <h:outputText value="#{ControllerBean.resultTable}" escape="false"/>
+        </div>
+        </h:form>
+    </f:view>
+</h:body>
+</html>

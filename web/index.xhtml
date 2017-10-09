@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Лабораторная №3</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link rel="icon" href="images/favicon.ico"/>
+    <script type="text/javascript" src="script.js"/>
+</h:head>
+
+<h:body class = "alive" link="yellow">
+    <f:view>
+        <h1 class="centered" style="color: blue;" >Стартовая страница</h1>
+            <div class="form centered" style="width: 150px" align="center" id="time">
+                Дата и время
+            <div id='datetime'>
+                <script type="text/javascript">
+                    dateContainer = document.getElementById('datetime');
+                    updateTime();
+                    function updateTime() {
+                        curDateTime = new Date().toLocaleString();
+                        dateContainer.innerHTML = curDateTime;
+                        setTimeout('updateTime()', 1000);
+                    }
+                </script>
+            </div>
+            <div class="changeLocation">
+                <h:form>
+                    <h:commandLink action="main" style="color: yellow">На главную </h:commandLink>
+                </h:form>
+            </div>
+            </div>
+        <div align="center" class="editor editor_VB">Влад Беспалов<br/> гр.P3211</div>
+        <div align="center" class="editor editor_DT">Данил Татаринов<br/>  гр.P3211</div>
+    </f:view>
+</h:body>
+</html>
